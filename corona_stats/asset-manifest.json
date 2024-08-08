@@ -16,9 +16,9 @@
     "static/media/shape.svg": "/corona_stats/static/media/shape.208f3d38.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.691f4b58.js",
-    "static/js/2.8e512e25.chunk.js",
-    "static/css/main.25ac248d.chunk.css",
-    "static/js/main.dbf34ca7.chunk.js"
+    "corona_stats/static/js/runtime-main.691f4b58.js",
+    "corona_stats/static/js/2.8e512e25.chunk.js",
+    "corona_stats/static/css/main.25ac248d.chunk.css",
+    "corona_stats/static/js/main.dbf34ca7.chunk.js"
   ]
 }
