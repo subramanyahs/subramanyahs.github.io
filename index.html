@@ -1,22 +1,1007 @@
----
-layout: page
-title: 
-subtitle: 
-use-site-title: true
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insight AI Report — AI-Powered Healthcare for Individuals & Enterprises</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<h3>Short Bio</h3>
-<p>
-  Senior software professional with 23+ years of expertise in planning, design, and development of Enterprise software. Led cross-functional teams with a diverse technical background. Sound experience in IT Service and Infrastructure management. Proven track record includes successful releases of Software, Conducting competitive research and analysis of technical solutions, and mentoring development teams
-</p>
+    :root {
+      --cream: #F5F0E8;
+      --ink: #0D0D0D;
+      --sage: #3D5A4C;
+      --gold: #C8A96E;
+      --rust: #B84C2B;
+      --soft: #E8E0D0;
+      --mist: #A8B5A2;
+      --white: #FAFAF7;
+    }
 
-<h3> My Work </h3>
-<p><a href="https://github.com/subramanyahs/embedded-rest-example" target="_blank">Embedded Jetty and Derby Example using Jersy REST </a></p>
-<p><a href="https://subramanyahs.github.io/corona_stats" target="_blank">Corona Stats </a></p>
-<p><a href="https://subramanyahs.github.io/aqi" target="_blank">Air Quality Index </a></p>
+    html { scroll-behavior: smooth; }
 
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
 
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(245,240,232,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(13,13,13,0.08);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .nav-logo span { color: var(--sage); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; color: var(--ink);
+      letter-spacing: 0.04em; text-transform: uppercase;
+      opacity: 0.7; transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      background: var(--ink); color: var(--cream);
+      border: none; padding: 0.65rem 1.6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--sage); }
 
-<h3>Contact</h3>
-<p><a href="https://www.linkedin.com/in/subramanyahs/" target="_blank">Linked In profile </a></p>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -20%; right: -10%;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse, rgba(61,90,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--sage); color: var(--cream);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.4rem 1rem; margin-bottom: 2rem;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.5; transform:scale(1.4); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900; line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--sage); }
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+      color: rgba(13,13,13,0.65); max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; }
+    .btn-primary {
+      background: var(--ink); color: var(--cream);
+      border: none; padding: 1rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.25s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--ink); padding: 0.95rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.25s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--cream); }
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .hero-card {
+      background: var(--white); border: 1px solid var(--soft);
+      padding: 2.5rem;
+      box-shadow: 24px 24px 0 var(--soft);
+      position: relative; max-width: 420px; width: 100%;
+    }
+    .hero-card-label {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mist); margin-bottom: 1.5rem;
+    }
+    .organ-score-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .organ-item {
+      padding: 1rem;
+      background: var(--cream);
+      border-left: 3px solid var(--sage);
+    }
+    .organ-name {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(13,13,13,0.5); margin-bottom: 0.4rem;
+    }
+    .organ-score {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.6rem; font-weight: 500; color: var(--sage);
+    }
+    .organ-score.warn { color: var(--gold); }
+    .organ-score.alert { color: var(--rust); }
+    .hero-card-footer {
+      font-size: 0.78rem; color: rgba(13,13,13,0.45);
+      border-top: 1px solid var(--soft); padding-top: 1rem;
+    }
+    .floating-stat {
+      position: absolute;
+      background: var(--ink); color: var(--cream);
+      padding: 0.8rem 1.2rem;
+      font-size: 0.78rem; font-weight: 500;
+    }
+    .floating-stat strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; display: block;
+    }
+    .floating-stat.top { top: -2rem; right: -2rem; }
+    .floating-stat.bottom { bottom: -2rem; left: -2rem; background: var(--sage); }
 
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--ink); color: var(--cream);
+      display: flex; overflow: hidden;
+    }
+    .stat-item {
+      flex: 1; padding: 2.5rem 3rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-desc { font-size: 0.82rem; opacity: 0.6; line-height: 1.5; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 4rem; }
+    .section-tag {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 600px; margin-bottom: 1.2rem;
+    }
+    .section-sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.75;
+      color: rgba(13,13,13,0.6); max-width: 560px;
+    }
+
+    /* ── CONDITIONS ── */
+    .conditions { background: var(--white); }
+    .conditions-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 2px; margin-top: 3.5rem;
+    }
+    .condition-card {
+      background: var(--cream); padding: 2.5rem 2rem;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+    .condition-card:hover { background: var(--soft); }
+    .condition-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--sage); transform: scaleX(0);
+      transition: transform 0.3s; transform-origin: left;
+    }
+    .condition-card:hover::after { transform: scaleX(1); }
+    .condition-icon {
+      width: 48px; height: 48px; margin-bottom: 1.5rem;
+      border: 1.5px solid var(--ink); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .condition-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .condition-card p {
+      font-size: 0.85rem; line-height: 1.7;
+      color: rgba(13,13,13,0.6);
+      margin-bottom: 1.5rem;
+    }
+    .condition-stat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem; color: var(--sage);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SCANS ── */
+    .scans { background: var(--cream); }
+    .scans-list { display: flex; flex-direction: column; gap: 0; margin-top: 3.5rem; }
+    .scan-row {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--soft);
+      transition: padding-left 0.3s;
+    }
+    .scan-row:hover { padding-left: 1rem; }
+    .scan-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem; color: var(--mist);
+      letter-spacing: 0.05em;
+    }
+    .scan-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem;
+    }
+    .scan-info p { font-size: 0.85rem; color: rgba(13,13,13,0.6); line-height: 1.6; }
+    .scan-badge {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.8rem; white-space: nowrap;
+    }
+    .scan-badge.included { background: rgba(61,90,76,0.12); color: var(--sage); }
+    .scan-badge.addon { background: rgba(200,169,110,0.15); color: #8B6D30; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--sage); color: var(--cream); }
+    .process .section-tag { color: var(--gold); }
+    .process .section-title { color: var(--cream); }
+    .process .section-sub { color: rgba(245,240,232,0.65); }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2rem; margin-top: 3.5rem;
+    }
+    .step {
+      padding: 2rem;
+      border: 1px solid rgba(245,240,232,0.15);
+      position: relative;
+    }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900;
+      color: rgba(245,240,232,0.15);
+      line-height: 1; margin-bottom: 1rem;
+    }
+    .step h4 {
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.02em; margin-bottom: 0.6rem;
+    }
+    .step p { font-size: 0.85rem; opacity: 0.65; line-height: 1.7; }
+
+    /* ── COMPARISON ── */
+    .comparison { background: var(--white); }
+    .compare-table {
+      width: 100%; margin-top: 3.5rem;
+      border-collapse: collapse;
+    }
+    .compare-table th, .compare-table td {
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--soft);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+    .compare-table th {
+      font-weight: 600; font-size: 0.78rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(13,13,13,0.5);
+      background: var(--cream);
+    }
+    .compare-table th.highlight { background: var(--ink); color: var(--gold); }
+    .compare-table td:first-child { text-align: left; font-weight: 500; }
+    .compare-table td.highlight { background: rgba(61,90,76,0.05); font-weight: 600; color: var(--sage); }
+    .check { color: var(--sage); font-size: 1rem; }
+    .cross { color: rgba(13,13,13,0.2); }
+    .compare-table tr:hover td { background: rgba(61,90,76,0.04); }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--cream); }
+    .pricing-wrapper {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; margin-top: 3.5rem; align-items: start;
+    }
+    .price-card {
+      background: var(--ink); color: var(--cream);
+      padding: 3rem;
+    }
+    .price-card-label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .price-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900;
+      line-height: 1; margin-bottom: 0.4rem;
+    }
+    .price-original {
+      font-size: 0.9rem; opacity: 0.4;
+      text-decoration: line-through; margin-bottom: 2rem;
+    }
+    .price-features { list-style: none; margin-bottom: 2.5rem; }
+    .price-features li {
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.88rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .price-features li::before {
+      content: '→'; color: var(--gold); font-size: 0.75rem;
+    }
+    .btn-gold {
+      width: 100%; background: var(--gold); color: var(--ink);
+      border: none; padding: 1rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.85; }
+    .price-addon {
+      background: var(--soft); padding: 2.5rem;
+      border: 1.5px dashed rgba(13,13,13,0.2);
+    }
+    .addon-label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(13,13,13,0.4); margin-bottom: 1rem;
+    }
+    .addon-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .addon-desc { font-size: 0.9rem; color: rgba(13,13,13,0.6); line-height: 1.7; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--white); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2rem; margin-top: 3.5rem;
+    }
+    .testimonial {
+      padding: 2rem;
+      background: var(--cream);
+      border-top: 3px solid var(--sage);
+      position: relative;
+    }
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; color: var(--sage);
+      line-height: 0.5; margin-bottom: 1.2rem;
+      opacity: 0.4;
+    }
+    .testimonial p {
+      font-size: 0.9rem; line-height: 1.75;
+      color: rgba(13,13,13,0.72); margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-name {
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FINDINGS BAND ── */
+    .findings-band {
+      background: var(--rust); color: var(--cream);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .finding-item {
+      padding: 4rem;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .finding-item:last-child { border-right: none; }
+    .finding-pct {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 900;
+      line-height: 1; margin-bottom: 0.75rem;
+      color: rgba(245,240,232,0.9);
+    }
+    .finding-desc { font-size: 1rem; opacity: 0.8; line-height: 1.6; }
+    .finding-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem; margin-bottom: 1rem;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--ink); color: var(--cream);
+      text-align: center; padding: 7rem 4rem;
+    }
+    .cta-section .section-title { color: var(--cream); max-width: 700px; margin: 0 auto 1.2rem; }
+    .cta-section .section-sub { color: rgba(245,240,232,0.55); margin: 0 auto 3rem; }
+    .cta-phone {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.4rem; color: var(--gold);
+      letter-spacing: 0.08em; margin-top: 2rem;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream);
+      border-top: 1px solid var(--soft);
+      padding: 3rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 900;
+    }
+    .footer-logo span { color: var(--sage); }
+    footer p {
+      font-size: 0.8rem; color: rgba(13,13,13,0.4);
+    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a {
+      font-size: 0.8rem; text-decoration: none;
+      color: rgba(13,13,13,0.5);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--sage); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    .hero-content > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+    .hero-visual { animation: fadeUp 0.9s ease 0.3s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem; gap: 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 2rem; }
+      .conditions-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .pricing-wrapper { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .findings-band { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .stats-band { flex-wrap: wrap; }
+      .stat-item { min-width: 50%; }
+      .compare-table { font-size: 0.78rem; }
+      .compare-table th, .compare-table td { padding: 0.8rem; }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .solution-category { grid-template-columns: 1fr; }
+      .solution-card { padding: 1.5rem; }
+    }
+
+    /* ── ENTERPRISE SOLUTIONS ── */
+    .enterprise { background: var(--white); }
+    .solutions-intro {
+      text-align: center; margin-bottom: 4rem;
+    }
+    .solutions-intro .section-title { margin-bottom: 1.5rem; }
+    .solution-categories {
+      display: flex; flex-direction: column; gap: 4rem;
+    }
+    .category-section {
+      background: var(--cream); padding: 3rem; border-left: 4px solid var(--sage);
+    }
+    .category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;
+      color: var(--ink);
+    }
+    .solution-category {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 2rem;
+    }
+    .solution-card {
+      background: var(--white); border: 1px solid var(--soft);
+      padding: 2rem; transition: all 0.3s;
+    }
+    .solution-card:hover {
+      box-shadow: 0 8px 24px rgba(61,90,76,0.15);
+      transform: translateY(-4px);
+    }
+    .solution-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .solution-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 0.75rem; color: var(--ink);
+    }
+    .solution-card p {
+      font-size: 0.9rem; color: rgba(13,13,13,0.6);
+      line-height: 1.6; margin-bottom: 1rem;
+    }
+    .solution-features {
+      list-style: none; font-size: 0.85rem;
+      color: rgba(13,13,13,0.55);
+    }
+    .solution-features li {
+      padding: 0.4rem 0; padding-left: 1.5rem;
+      position: relative;
+    }
+    .solution-features li::before {
+      content: '→'; position: absolute;
+      left: 0; color: var(--sage); font-weight: bold;
+    }
+    .business-model {
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid var(--soft);
+      font-size: 0.8rem;
+      color: var(--sage); font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Insight<span>.</span>AI</div>
+    <ul class="nav-links">
+      <li><a href="#conditions">Conditions</a></li>
+      <li><a href="#scans">Scans</a></li>
+      <li><a href="#solutions">Enterprise</a></li>
+    </ul>
+    <button class="nav-cta">Coming Soon</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Insight AI Report — India's Most Comprehensive Health Intelligence
+      </div>
+      <h1>See What Your Body<br/><em>Hides</em> From You</h1>
+      <p class="hero-sub">
+        Cancer. Heart blockages. Silent metabolic damage. Most diseases begin silently. Cent finds them early — before they find you.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">Coming Soon...</a>
+        <a href="#scans" class="btn-outline">Explore Features</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="floating-stat top"><strong>300+</strong>conditions screened</div>
+        <div class="floating-stat bottom"><strong>AI-led</strong>synthesis</div>
+        <div class="organ-score-grid">
+          <div class="organ-item">
+            <div class="organ-name">Heart</div>
+            <div class="organ-score">8.1</div>
+          </div>
+          <div class="organ-item">
+            <div class="organ-name">Brain</div>
+            <div class="organ-score warn">6.2</div>
+          </div>
+          <div class="organ-item">
+            <div class="organ-name">Liver</div>
+            <div class="organ-score alert">2.8</div>
+          </div>
+          <div class="organ-item">
+            <div class="organ-name">Lungs</div>
+            <div class="organ-score">9.6</div>
+          </div>
+        </div>
+        <div class="hero-card-footer">
+          Powered by MRI · CT · DEXA · 100+ Biomarkers · ECG
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="stat-item">
+      <div class="stat-num">300+</div>
+      <div class="stat-desc">Conditions screened via<br/>CCNM™ protocol</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4%</div>
+      <div class="stat-desc">Users with critical hidden issues<br/>before any symptoms</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">28%</div>
+      <div class="stat-desc">Had major conditions needing<br/>timely medical action</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2 hrs</div>
+      <div class="stat-desc">Complete scan. Covered<br/>for the full year.</div>
+    </div>
+  </div>
+
+  <!-- CONDITIONS -->
+  <section class="conditions" id="conditions">
+    <div class="section-tag">What We Screen</div>
+    <h2 class="section-title">300+ Conditions.<br/>Powered by CCNM™</h2>
+    <p class="section-sub">Cent targets the major disease categories responsible for 80%+ of premature deaths while comprehensively screening across the body.</p>
+    <div class="conditions-grid">
+      <div class="condition-card">
+        <div class="condition-icon">🧬</div>
+        <h3>Cancer</h3>
+        <p>Early-stage cancer is often invisible. Full-body MRI helps find what blood tests miss — before symptoms appear.</p>
+        <div class="condition-stat">1 in 3 carry hidden cancer risk</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🫀</div>
+        <h3>Cardiac Health</h3>
+        <p>Early heart disease is silent. CT Calcium Scoring detects coronary calcium and hidden plaque before a cardiac event.</p>
+        <div class="condition-stat">50% of Indian men have heart attacks before 50</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">🧠</div>
+        <h3>Neuro Health</h3>
+        <p>Brain changes begin years before symptoms. MRI detects early structural and vascular signs that routine tests can't see.</p>
+        <div class="condition-stat">7.4% of seniors have undiagnosed dementia</div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-icon">⚗️</div>
+        <h3>Metabolic Health</h3>
+        <p>Metabolic damage builds quietly. DEXA scans reveal visceral fat and muscle loss that standard blood tests miss.</p>
+        <div class="condition-stat">38% of city adults have silent fatty liver</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCANS -->
+  <section class="scans" id="scans">
+    <div class="section-tag">Advanced Detection. Zero Radiation Risk</div>
+    <h2 class="section-title">Multi-Modal<br/>Scanning Protocol</h2>
+    <p class="section-sub">Our integrated approach combines imaging and deep lab analysis into one structured flow — surfacing risks that standard checkups simply don't catch.</p>
+    <div class="scans-list">
+      <div class="scan-row">
+        <div class="scan-num">01</div>
+        <div class="scan-info">
+          <h4>Full-Body MRI</h4>
+          <p>Radiation-free, high-resolution imaging to screen for cancers and structural abnormalities across the entire body. Gold-standard soft tissue modality for advanced early detection.</p>
+        </div>
+        <span class="scan-badge included">Included</span>
+      </div>
+      <div class="scan-row">
+        <div class="scan-num">02</div>
+        <div class="scan-info">
+          <h4>CT Calcium Scoring</h4>
+          <p>Ultra low-dose cardiac imaging to detect early coronary artery calcification — a leading indicator of cardiovascular risk, often missed by ECG alone.</p>
+        </div>
+        <span class="scan-badge included">Included</span>
+      </div>
+      <div class="scan-row">
+        <div class="scan-num">03</div>
+        <div class="scan-info">
+          <h4>DEXA Scan</h4>
+          <p>Body composition and bone density analysis to assess osteoporosis risk, visceral fat levels, and metabolic health with clinical precision.</p>
+        </div>
+        <span class="scan-badge included">Included</span>
+      </div>
+      <div class="scan-row">
+        <div class="scan-num">04</div>
+        <div class="scan-info">
+          <h4>100+ Blood & Urine Biomarkers</h4>
+          <p>Deep lab analysis measuring metabolic, inflammatory, hormonal, cardiac, and organ-level function. Far beyond standard panel tests.</p>
+        </div>
+        <span class="scan-badge included">Included</span>
+      </div>
+      <div class="scan-row">
+        <div class="scan-num">05</div>
+        <div class="scan-info">
+          <h4>Genetic Risk Module</h4>
+          <p>Advanced NGS and polygenic risk (PRS) modeling to assess inherited risk across cardiovascular, neurological, metabolic, and cancer conditions.</p>
+        </div>
+        <span class="scan-badge addon">Add-On</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINDINGS BAND -->
+  <div class="findings-band">
+    <div class="finding-item">
+      <div class="finding-tag">Critical Findings</div>
+      <div class="finding-pct">4%</div>
+      <div class="finding-desc">of our users had critical hidden issues detected before any symptoms appeared</div>
+    </div>
+    <div class="finding-item">
+      <div class="finding-tag">Major Findings</div>
+      <div class="finding-pct">28%</div>
+      <div class="finding-desc">of our users had major conditions that needed timely medical action</div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-tag">Early Detection. Real Results.</div>
+    <h2 class="section-title">Hear From Those Who Chose to Look Early</h2>
+    <p class="section-sub">Reassurance for many. Timely intervention for others. Relief for all.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-quote">"</div>
+        <p>The scan gave me a complete view of my body. And for the first time, I felt truly confident knowing we were thoroughly screened — not just told we were fine.</p>
+        <div class="testimonial-name">Arvind</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-quote">"</div>
+        <p>In my family, issues were diagnosed later than they should have been. If caught preemptively, treatment could have been faster. That's why I came across Insight AI Report.</p>
+        <div class="testimonial-name">Prashanth</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-quote">"</div>
+        <p>I've been doing full-body checkups for years. Insight AI Report uses the latest technologies usually only found in developed countries. The reports are unlike anything I've seen in India.</p>
+        <div class="testimonial-name">Subramanya</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE SOLUTIONS -->
+  <section class="enterprise" id="solutions">
+    <div class="solutions-intro" style="padding: 6rem 4rem 0;">
+      <div class="section-tag">Enterprise AI Solutions</div>
+      <h2 class="section-title">AI Healthcare Beyond Individual Scans</h2>
+      <p class="section-sub">Insight AI Report's AI engine powers clinical decision-making, risk prediction, and operational optimization across healthcare ecosystems. 14 proven solutions for hospitals, labs, pharma, insurers, and public health.</p>
+    </div>
+
+    <div class="solution-categories" style="padding: 2rem 4rem;">
+      <!-- Hospitals & Healthcare Providers -->
+      <div class="category-section">
+        <div class="category-title">🏥 Hospitals & Healthcare Providers</div>
+        <div class="solution-category">
+          <div class="solution-card">
+            <div class="solution-number">1️⃣</div>
+            <h3>AI Clinical Decision Support</h3>
+            <p>Analyze EMR/EHR records, lab reports, ECG, and radiology images in real-time to suggest probable diagnoses and risk alerts.</p>
+            <ul class="solution-features">
+              <li>Reduce diagnostic errors</li>
+              <li>Speed up decision-making</li>
+              <li>Multi-modal data integration</li>
+            </ul>
+            <div class="business-model">📊 SaaS subscription per hospital</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">2️⃣</div>
+            <h3>AI Radiology & Imaging Automation</h3>
+            <p>Automatically detect abnormalities in X-ray, CT, and MRI scans with critical case triage and faster reporting.</p>
+            <ul class="solution-features">
+              <li>Detect abnormalities instantly</li>
+              <li>Auto-triage critical cases</li>
+              <li>Faster turnaround time</li>
+            </ul>
+            <div class="business-model">💰 Per-scan pricing or enterprise license</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">3️⃣</div>
+            <h3>Predictive Patient Risk Monitoring</h3>
+            <p>Predict ICU deterioration, readmission risks, and early sepsis detection before clinical deterioration occurs.</p>
+            <ul class="solution-features">
+              <li>Reduce mortality rates</li>
+              <li>Early sepsis alerts</li>
+              <li>Improve quality metrics</li>
+            </ul>
+            <div class="business-model">📈 Improves hospital outcomes</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">4️⃣</div>
+            <h3>Smart Bed & Resource Optimization</h3>
+            <p>Predict bed occupancy, optimize OT scheduling, and forecast staff allocation to maximize hospital efficiency.</p>
+            <ul class="solution-features">
+              <li>Predict occupancy patterns</li>
+              <li>Optimize OT schedules</li>
+              <li>Smart staff allocation</li>
+            </ul>
+            <div class="business-model">🎯 Target: Multi-specialty hospitals</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagnostic Labs -->
+      <div class="category-section">
+        <div class="category-title">🧪 Diagnostic Labs</div>
+        <div class="solution-category">
+          <div class="solution-card">
+            <div class="solution-number">5️⃣</div>
+            <h3>AI Lab Report Interpretation Platform</h3>
+            <p>Transform raw lab results into actionable health summaries, flag critical parameters, and predict chronic disease risk.</p>
+            <ul class="solution-features">
+              <li>Auto health summaries</li>
+              <li>Flag critical values</li>
+              <li>Disease risk prediction</li>
+            </ul>
+            <div class="business-model">🔗 B2B integration + B2C app</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">6️⃣</div>
+            <h3>ECG & Cardiac AI Analytics</h3>
+            <p>Detect arrhythmias, automate ECG interpretation, and enable remote cardiology support integrated with hospital systems.</p>
+            <ul class="solution-features">
+              <li>Arrhythmia detection</li>
+              <li>Automated interpretation</li>
+              <li>Remote cardiology support</li>
+            </ul>
+            <div class="business-model">🏥 Works with Philips, GE systems</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pharma & Drug Discovery -->
+      <div class="category-section">
+        <div class="category-title">💊 Pharma & Drug Discovery</div>
+        <div class="solution-category">
+          <div class="solution-card">
+            <div class="solution-number">7️⃣</div>
+            <h3>AI Drug Discovery Acceleration</h3>
+            <p>Screen drug molecules, predict interactions, and optimize clinical trial protocols to reduce time-to-market.</p>
+            <ul class="solution-features">
+              <li>Accelerate molecule screening</li>
+              <li>Predict drug interactions</li>
+              <li>Optimize trial protocols</li>
+            </ul>
+            <div class="business-model">🧬 Enterprise licensing</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">8️⃣</div>
+            <h3>AI Clinical Trial Recruitment</h3>
+            <p>Identify eligible patients from hospital records to reduce recruitment time and improve trial enrollment rates.</p>
+            <ul class="solution-features">
+              <li>Auto-identify eligible patients</li>
+              <li>Reduce recruitment time</li>
+              <li>Improve enrollment rates</li>
+            </ul>
+            <div class="business-model">🎯 Per-trial pricing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insurance Companies -->
+      <div class="category-section">
+        <div class="category-title">🏦 Insurance Companies</div>
+        <div class="solution-category">
+          <div class="solution-card">
+            <div class="solution-number">9️⃣</div>
+            <h3>AI-Based Health Risk Underwriting</h3>
+            <p>Score risk from medical records, detect fraud patterns, and model claim probabilities for accurate underwriting.</p>
+            <ul class="solution-features">
+              <li>Accurate risk scoring</li>
+              <li>Fraud detection</li>
+              <li>Claims prediction</li>
+            </ul>
+            <div class="business-model">💼 Per-policy underwriting</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">🔟</div>
+            <h3>Claims Automation</h3>
+            <p>Auto-validate medical claims using NLP-based document verification for faster, accurate claim processing.</p>
+            <ul class="solution-features">
+              <li>Auto claim validation</li>
+              <li>NLP document analysis</li>
+              <li>Faster processing</li>
+            </ul>
+            <div class="business-model">⚙️ Process optimization</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Healthcare & Remote Monitoring -->
+      <div class="category-section">
+        <div class="category-title">🏠 Home Healthcare & Remote Monitoring</div>
+        <div class="solution-category">
+          <div class="solution-card">
+            <div class="solution-number">1️⃣1️⃣</div>
+            <h3>AI Remote Patient Monitoring</h3>
+            <p>Connect wearables to AI-powered alerts for chronic disease monitoring, elderly care, and preventive intervention.</p>
+            <ul class="solution-features">
+              <li>Wearable integration</li>
+              <li>Smart health alerts</li>
+              <li>Chronic disease tracking</li>
+            </ul>
+            <div class="business-model">📱 Per-patient subscription</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">1️⃣2️⃣</div>
+            <h3>AI Virtual Health Assistant</h3>
+            <p>Provide intelligent symptom checking, medication reminders, and chatbot-based triage for accessible healthcare at home.</p>
+            <ul class="solution-features">
+              <li>Symptom checker</li>
+              <li>Medication reminders</li>
+              <li>24/7 chatbot support</li>
+            </ul>
+            <div class="business-model">💬 Freemium model</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Population Health & Public Health -->
+      <div class="category-section">
+        <div class="category-title">📊 Population Health & Public Health</div>
+        <div class="solution-category">
+          <div class="solution-card">
+            <div class="solution-number">1️⃣3️⃣</div>
+            <h3>Disease Outbreak Prediction</h3>
+            <p>Analyze geographic and clinical data to predict disease outbreaks and provide government dashboards for public health response.</p>
+            <ul class="solution-features">
+              <li>Geo-clinical analysis</li>
+              <li>Outbreak prediction</li>
+              <li>Government integration</li>
+            </ul>
+            <div class="business-model">🏛️ Government contracts</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-number">1️⃣4️⃣</div>
+            <h3>Preventive Health Risk Scoring</h3>
+            <p>Build corporate wellness platforms that predict lifestyle disease risk and drive preventive health behavior change.</p>
+            <ul class="solution-features">
+              <li>Risk scoring</li>
+              <li>Behavior change tools</li>
+              <li>Corporate wellness</li>
+            </ul>
+            <div class="business-model">💼 B2B corporate platform</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; padding:3rem 4rem;">
+      <p style="font-size:1rem; color:rgba(13,13,13,0.65); max-width:700px; margin:0 auto; line-height:1.8;">
+        From reducing diagnostic errors to accelerating drug discovery, our AI solutions integrate seamlessly into existing healthcare infrastructure. <strong>Contact our enterprise team to explore your use case.</strong>
+      </p>
+      <button class="nav-cta" style="margin-top:2rem;">Request Enterprise Demo</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Insight<span>.</span>AI</div>
+    <p>© 2026 Insight AI Report. All rights reserved.</p>
+   
+  </footer>
+
+</body>
+</html>
